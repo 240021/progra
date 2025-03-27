@@ -1,0 +1,46 @@
+namespace profundidad
+{
+    using System;
+    using System.Collections.Generic;
+
+    class Program
+    {
+        static Dictionary<char, List<char>> grafo = new Dictionary<char, List<char>>
+        {
+            {'A', new List<char>{ 'B', 'C', 'D' }},
+            {'B', new List<char>{ 'E', 'F' }},
+            {'C', new List<char>{ 'G' }},
+            {'D', new List<char>{ 'H' }},
+            {'E', new List<char>{ 'I', 'J' }},
+            {'F', new List<char>{ 'K' }},
+            {'G', new List<char>{ 'L' }},
+            {'H', new List<char>{ 'M', 'N' }},
+            {'L', new List<char>{ 'O' }},
+            {'M', new List<char>{ 'O' }},
+            {'N', new List<char>{}},
+            {'O', new List<char>{}}
+        };
+
+        static HashSet<char> visitados = new HashSet<char>();
+
+        static void profundidad(char nodo)
+        {
+            if (visitados.Contains(nodo)) return;
+            Console.Write(nodo + " ");
+            visitados.Add(nodo);
+            if (grafo.ContainsKey(nodo))
+            {
+                foreach (char vecino in grafo[nodo])
+                {
+                    profundidad(vecino);
+                }
+            }
+        }
+
+        static void Main()
+        {
+            Console.WriteLine("RECORRIDO EN PROFUNDIDAD, INGRESE UN NODO (A-O):");
+            string respuesta = Console.ReadLine();
+            if (!string.IsNullOrEmpty(respuesta) && respuesta.Length == 1)
+            {
+                char nodoInicial = respuesta[0
