@@ -1,4 +1,4 @@
-{
+
     class BusquedaSecuencial
     {
         static int BuscarSecuencial(string[] arreglo, string valorBuscado)
