@@ -1,0 +1,38 @@
+{
+    class BusquedaSecuencial
+    {
+        static int BuscarSecuencial(string[] arreglo, string valorBuscado)
+        {
+            // Recorre el arreglo
+            for (int indice = 0; indice < arreglo.Length; indice++)
+            {
+                // Devuelve la ubicación si encuentra el nombre buscado
+                if (arreglo[indice] == valorBuscado)
+                {
+                    return indice;
+                }
+            }
+            return -1;
+        }
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+                string nombretotal = "a";
+                string[] numeros = { "INGRID", "VICENTE", "LUIS", "ALEJANDRO", "JULIO", "ANTONIO" };
+                Console.WriteLine("Ingrese un nombre a buscar de los estudiantes de TI de cuarto del turno vespertino");
+                string nombreBuscado = Console.ReadLine();
+                nombretotal = nombreBuscado.ToUpper();
+                int pos = BuscarSecuencial(numeros, nombretotal);
+                if (pos != -1) 
+                { 
+                    Console.WriteLine($"El nombre {nombretotal} se encontró en la posición {pos + 1}"); 
+                }
+                else 
+                { 
+                    Console.WriteLine($"El nombre {nombretotal} no se encontró en el arreglo."); 
+                }
+            }
+        }
+    }
+}
