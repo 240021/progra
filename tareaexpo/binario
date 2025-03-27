@@ -1,4 +1,4 @@
-namespace EJERCICIO_BUSQUEDA_BINARIA
+namespace binario
 {
     internal class Program
     {
