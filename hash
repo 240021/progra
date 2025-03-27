@@ -1,0 +1,43 @@
+namespace hash
+{
+    using System;
+    using System.Collections.Generic;
+
+    class Biblioteca
+    {
+        static void Main()
+        {
+            // Códigos de los libros
+            int[] libros = { 8, 15, 11, 23, 4 };
+
+            // Número de estantes
+            int numEstantes = 4;
+
+            // Inicializar los estantes (un arreglo de listas para manejar colisiones)
+            List<int>[] estantes = new List<int>[numEstantes];
+            for (int i = 0; i < numEstantes; i++)
+            {
+                estantes[i] = new List<int>();  // Cada estante es una lista vacía
+            }
+
+            // Función hash para calcular el estante de cada libro
+            foreach (int libro in libros)
+            {
+                int estante = libro % numEstantes;  // Regla: código del libro % 4
+                estantes[estante].Add(libro);  // Insertamos el libro en el estante correspondiente
+            }
+
+            // Mostrar el contenido de los estantes
+            Console.WriteLine("Contenido de los estantes:");
+            for (int i = 0; i < numEstantes; i++)
+            {
+                Console.Write($"Estante {i}: ");
+                foreach (int libro in estantes[i])
+                {
+                    Console.Write(libro + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
